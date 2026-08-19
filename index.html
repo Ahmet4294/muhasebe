@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+  <title>Example</title>
+</head>
+
+<body>
+  <aside class="aside">
+    <h3>Muhasebe Uygulaması</h3>
+    <nav class="nav">
+      <ul class="nav-list">
+        <li>
+          <a href="#panel" class="nav-link active">
+            <i class="fa-regular fa-house"></i>
+            <span>Panel</span>
+          </a>
+        </li>
+        <li>
+          <a href="#fatura" class="nav-link" onclick="Fatura()">
+            <i class="fa-regular fa-file-lines"></i>
+            <span>Faturalar</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>Raporlar</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-gear"></i>
+            <span>Ayarlar</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <section class="table" aria-labelledby="card tablo">
+      <h3>Yeni İşlemi Kaydet</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Sıra</th>
+            <th>Tarih</th>
+            <th>Kategori</th>
+            <th>Açıklama</th>
+            <th>Tür</th>
+            <th>Tutar(₺)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button class="show-more" onclick="showMore()">Daha Fazla Göster</button>
+    </section>
+    <section aria-labelledby="card-title">
+      <div class="cards">
+        <article class="card card-1">
+          <header>
+            <div>
+              <h4>TOPLAM GELİR</h4>
+              <strong id="total-income">₺0</strong>
+            </div>
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          </header>
+          <small class="profit" id="income-present">
+            <i class="fa-solid fa-sort-up"></i>
+            0%
+          </small>
+        </article>
+        <article class="card card-1">
+          <header>
+            <div>
+              <h4>NET KÂR</h4>
+              <strong id="net-profit">₺0</strong>
+            </div>
+            <i class="fa-solid fa-arrow-trend-up"></i>
+          </header>
+          <small class="profit" id="profit-present">
+            <i class="fa-solid fa-sort-up"></i>
+            0%
+          </small>
+        </article>
+        <article class="card card-2">
+          <header>
+            <div>
+              <h4>MEVCUT BAKİYE</h4>
+              <strong id="balance">₺100.000</strong>
+            </div>
+            <i class="fa-regular fa-credit-card"></i>
+          </header>
+          <small class="profit" id="balance-present">
+            <i class="fa-solid fa-sort-up"></i>
+            0%
+          </small>
+        </article>
+        <article class="card card-2">
+          <header>
+            <div>
+              <h4>SON FATURALAR</h4>
+              <strong id="invoice-count">0</strong>
+            </div>
+            <i class="fa-regular fa-file-lines"></i>
+          </header>
+          <small class="unpaid">
+            ÖDENMEMİŞ
+          </small>
+        </article>
+      </div>
+    </section>
+    <section class="new-process">
+      <button class="xmark" onclick="xMark()">X</button>
+      <h2>YENİ İŞLEM KAYDET</h2>
+      <div class="content">
+        <div class="category">
+          <label for="category">Kategori</label>
+          <select id="category">
+            <option value="" disabled selected hidden>Kategori Seçin</option>
+            <option value="maaş">Maaş</option>
+            <option value="fatura">Fatura</option>
+            <option value="kira">Kira</option>
+            <option value="vergi">Vergi</option>
+            <option value="sigorta">Sigorta</option>
+            <option value="alışveriş">Alışveriş</option>
+            <option value="banka">Banka</option>
+            <option value="diğer">Diğer</option>
+          </select>
+        </div>
+        <div class="total">
+          <label for="total">Tutar</label>
+          <input type="number" id="total" />
+        </div>
+        <div class="history">
+          <label for="history">Tarih</label>
+          <input type="date" id="history" value="" />
+        </div>
+        <div class="type">
+          <span>Tür</span>
+          <div>
+            <label for="income">
+              <input type="radio" id="income" name="type" value="Gelir" />
+              Gelir
+            </label>
+            <label for="expense">
+              <input type="radio" id="expense" name="type" value="Gider" />
+              Gider
+            </label>
+          </div>
+        </div>
+        <div class="description">
+          <label for="description">Açıklama</label>
+          <input type="text" id="description" />
+        </div>
+      </div>
+      <button class="save" onclick="saveProcess()">
+        <i class="fa-regular fa-circle-check"></i>
+        <span>KAYDET</span>
+      </button>
+    </section>
+
+    <button class="plus" onclick="newProcess()">+</button>
+  </main>
+
+  <div class="overlay" onclick="Overlay()"></div>
+  <div class="load"></div>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

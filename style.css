@@ -1,0 +1,447 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a,
+span {
+  display: inline-block;
+  text-decoration: none;
+}
+
+label,
+img {
+  display: block;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  transition: all .25s ease;
+
+  &:active {
+    transform: scale(.9);
+  }
+}
+
+img {
+  object-fit: contain;
+  object-position: center;
+}
+
+input {
+  background-color: transparent;
+
+  &::placeholder {
+    font-size: 14px;
+    font-weight: 300;
+  }
+}
+
+:root {
+  /* Arka Plan ve Panel Renkleri */
+  --bg-primary: #0b1329;
+  /* Ana sayfa koyu lacivert arka plan */
+  --bg-card: #131e3a;
+  /* Kart ve modül arka planları */
+  --bg-card-hover: #1c2a4f;
+  /* Kart üzerine gelince (Hover) */
+  --sidebar-bg: #080d1d;
+  /* Sol menü (Sidebar) arka planı */
+
+  /* Vurgu ve Buton Renkleri */
+  --accent-yellow: #fbc02d;
+  /* "Kaydet" butonu ve grafik çubukları */
+  --accent-yellow-hover: #f57f17;
+  --accent-purple: #5c338f;
+  /* Net Kâr kartı gradyan vurgusu */
+
+  /* Metin Renkleri */
+  --text-primary: #ffffff;
+  /* Başlıklar ve ana metinler */
+  --text-secondary: #8c9ba5;
+  /* Alt başlıklar, etiketler ve pasif menüler */
+  --text-muted: #536375;
+  /* Input border ve placeholder */
+
+  /* Durum ve İşlem Renkleri */
+  --status-income: #26a69a;
+  /* Gelir metinleri ve göstergeleri (Yeşil/Turkuaz) */
+  --status-expense: #ef5350;
+  /* Gider metinleri ve göstergeleri (Kırmızı) */
+  --border-color: #1f2d52;
+  /* Tablo ve kart kenarlıkları */
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  color: var(--text-primary);
+}
+
+.aside {
+  flex: 1 0 0;
+  background-color: var(--bg-card);
+  border-right: 2px solid var(--border-color);
+  padding: 2rem 1rem;
+}
+
+.aside h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.aside .nav {
+  margin-top: 2rem;
+}
+
+.aside .nav-link {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--text-primary);
+  font-size: 20px;
+  padding: 8px 10px;
+  margin-top: .3rem;
+  transition: .2s ease;
+
+  & i {
+    color: var(--text-muted);
+    transition: .2s ease;
+  }
+
+  & span {
+    color: var(--text-secondary);
+    transition: .2s ease;
+  }
+}
+
+.aside .nav-link.active,
+.aside .nav-link:hover {
+  background-color: var(--bg-card-hover);
+
+  & i,
+  & span {
+    color: var(--text-primary);
+  }
+}
+
+.main {
+  flex: 4 0 0;
+  background-color: var(--sidebar-bg);
+  padding: 1rem;
+  display: grid;
+}
+
+.main .cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.main .card {
+  display: grid;
+  gap: .5rem;
+  padding: .5rem .8rem;
+  background-color: var(--bg-card);
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.main .card:hover {
+  background-color: var(--bg-card-hover);
+}
+
+.main .card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main .card:nth-child(3) header,
+.main .card:nth-child(4) header {
+  align-items: start;
+}
+
+.main .card header h4 {
+  font-weight: 400;
+  color: var(--text-primary);
+  opacity: .9;
+}
+
+.main .card header strong {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.main .card header i {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.main .card small {
+  display: flex;
+  align-items: end;
+  font-size: 14px;
+  opacity: .8;
+
+  & i {
+    font-size: inherit;
+  }
+}
+
+
+.main .card small.profit {
+  color: var(--status-income);
+}
+
+.main .card small.damage {
+  color: var(--status-expense);
+}
+
+.main .card small.unpaid {
+  color: var(--accent-yellow-hover);
+}
+
+.table {
+  margin-bottom: 1rem;
+  padding: .6rem .8rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: .8rem;
+  max-height: 360px;
+}
+
+table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--sidebar-bg);
+}
+
+.table th {
+  background-color: var(--bg-primary);
+  padding-block: .5rem;
+  font-weight: 700;
+}
+
+.table th:first-of-type,
+.table td:first-of-type {
+  width: 7%;
+}
+
+.table td:first-of-type {
+  opacity: .8;
+}
+
+.table tbody tr {
+  background-color: var(--bg-card-hover);
+}
+
+.table td {
+  padding-left: .4rem;
+  padding-block: .5rem;
+  text-transform: capitalize;
+  text-align: center;
+  font-weight: 500;
+}
+
+.plus {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--accent-yellow);
+  color: var(--text-primary);
+  font-size: 2rem;
+  text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+.new-process {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.5rem;
+  width: 500px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  z-index: 4;
+  transition: all .2s ease;
+  pointer-events: none;
+  opacity: 0;
+
+  &>* {
+    color: var(--text-primary);
+  }
+}
+
+.new-process h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.new-process .content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 3rem;
+  row-gap: 1.5rem;
+  margin-block: 3rem 1.5rem;
+  padding-inline: 2rem;
+}
+
+.new-process label,
+.new-process .type span {
+  font-size: 18px;
+}
+
+.new-process #total,
+.new-process #history,
+.new-process #description,
+.new-process #category {
+  width: 100%;
+  background-color: var(--bg-primary);
+  color: #fff;
+  font-size: 17px;
+  border-radius: .5rem;
+  padding: .6rem;
+  border: 1px solid var(--border-color);
+
+  &:focus {
+    border-color: var(--accent-yellow);
+  }
+}
+
+.new-process #description {
+  padding-block: 1rem;
+}
+
+.new-process #total::-webkit-inner-spin-button,
+.new-process #total::-webkit-outer-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.new-process #history::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1);
+}
+
+.new-process .type div {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: .6rem;
+}
+
+.new-process .description {
+  grid-column: 1 / -1;
+}
+
+.new-process .save {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  justify-self: center;
+  padding: 10px 4rem;
+  font-weight: 600;
+  background-color: var(--accent-yellow);
+  color: var(--bg-card);
+  border-radius: .5rem;
+
+  & i {
+    font-size: 18px;
+  }
+}
+
+.new-process .save:hover {
+  background-color: var(--accent-yellow-hover);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .3);
+  z-index: 3;
+  transition: all .2s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.new-process .xmark {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  color: var(--text-secondary);
+}
+
+.new-process .xmark:hover {
+  color: var(--text-primary);
+}
+
+.load {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15rem;
+  height: 15rem;
+  border: 2rem solid var(--text-muted);
+  border-top-color: var(--status-income);
+  border-radius: 50%;
+  z-index: 5;
+  animation: loading .6s linear infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes loading {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.show-more {
+  display: grid;
+  background-color: var(--accent-yellow);
+  color: var(--text-primary);
+  width: 30%;
+  margin-inline: auto;
+  padding-block: .5rem;
+  font-size: 18px;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+  border-radius: 5px;
+  margin-top: .3rem;
+}
