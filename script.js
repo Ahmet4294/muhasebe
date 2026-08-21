@@ -33,8 +33,8 @@ const removeValue = () => {
   }
 };
 
-window.addEventListener("DOMContentLoaded", () => {
-  const random = Math.floor(Math.random() * 3) + 2;
+const Loading = (randomMax = 3, randomMin = 2) => {
+  const random = Math.floor(Math.random() * randomMax) + randomMin;
 
   setTimeout(() => {
     for (const element of [load, overlay]) {
@@ -47,6 +47,10 @@ window.addEventListener("DOMContentLoaded", () => {
     element.style.opacity = "1";
     element.style.pointerEvents = "auto";
   }
+};
+
+window.addEventListener("DOMContentLoaded", () => {
+  Loading();
 });
 
 function newProcess() {
@@ -115,10 +119,208 @@ let data = [
     type: "gelir",
     total: "5.000",
   },
+  {
+    index: 7,
+    history: "15.08.2026",
+    category: "satış",
+    description: "Web sitesi satışı",
+    type: "gelir",
+    total: "8.500",
+  },
+  {
+    index: 8,
+    history: "15.08.2026",
+    category: "vergi",
+    description: "KDV ödemesi",
+    type: "gider",
+    total: "3.200",
+  },
+  {
+    index: 9,
+    history: "14.08.2026",
+    category: "sigorta",
+    description: "İşyeri sigorta primi",
+    type: "gider",
+    total: "2.850",
+  },
+  {
+    index: 10,
+    history: "14.08.2026",
+    category: "alışveriş",
+    description: "Ofis mobilyası alımı",
+    type: "gider",
+    total: "7.400",
+  },
+  {
+    index: 11,
+    history: "13.08.2026",
+    category: "banka",
+    description: "Havale işlem ücreti",
+    type: "gider",
+    total: "175",
+  },
+  {
+    index: 12,
+    history: "13.08.2026",
+    category: "maaş",
+    description: "Prim ödemesi",
+    type: "gider",
+    total: "3.750",
+  },
+  {
+    index: 13,
+    history: "12.08.2026",
+    category: "kira",
+    description: "Depo kullanım bedeli",
+    type: "gider",
+    total: "3.800",
+  },
+  {
+    index: 14,
+    history: "12.08.2026",
+    category: "sigorta",
+    description: "Araç sigortası",
+    type: "gider",
+    total: "4.250",
+  },
+  {
+    index: 15,
+    history: "11.08.2026",
+    category: "alışveriş",
+    description: "Bilgisayar ekipmanı",
+    type: "gider",
+    total: "11.500",
+  },
+  {
+    index: 16,
+    history: "11.08.2026",
+    category: "banka",
+    description: "Hesap işletim ücreti",
+    type: "gider",
+    total: "320",
+  },
+  {
+    index: 17,
+    history: "10.08.2026",
+    category: "diğer",
+    description: "Danışmanlık hizmeti",
+    type: "gelir",
+    total: "9.750",
+  },
+  {
+    index: 18,
+    history: "10.08.2026",
+    category: "vergi",
+    description: "Stopaj ödemesi",
+    type: "gider",
+    total: "2.150",
+  },
+  {
+    index: 19,
+    history: "09.08.2026",
+    category: "fatura",
+    description: "Su faturası",
+    type: "gider",
+    total: "425",
+  },
+  {
+    index: 20,
+    history: "09.08.2026",
+    category: "maaş",
+    description: "Yemek yardımı",
+    type: "gider",
+    total: "2.600",
+  },
+  {
+    index: 21,
+    history: "08.08.2026",
+    category: "satış",
+    description: "E-ticaret siparişi",
+    type: "gelir",
+    total: "13.250",
+  },
+  {
+    index: 22,
+    history: "08.08.2026",
+    category: "alışveriş",
+    description: "Kırtasiye ürünleri",
+    type: "gider",
+    total: "980",
+  },
+  {
+    index: 23,
+    history: "07.08.2026",
+    category: "banka",
+    description: "POS cihazı komisyonu",
+    type: "gider",
+    total: "640",
+  },
+  {
+    index: 24,
+    history: "07.08.2026",
+    category: "diğer",
+    description: "Freelance proje geliri",
+    type: "gelir",
+    total: "6.800",
+  },
+  {
+    index: 25,
+    history: "06.08.2026",
+    category: "fatura",
+    description: "Doğalgaz faturası",
+    type: "gider",
+    total: "1.450",
+  },
+  {
+    index: 26,
+    history: "06.08.2026",
+    category: "kira",
+    description: "Araç park kira bedeli",
+    type: "gider",
+    total: "1.750",
+  },
+  {
+    index: 27,
+    history: "05.08.2026",
+    category: "vergi",
+    description: "Damga vergisi",
+    type: "gider",
+    total: "850",
+  },
+  {
+    index: 28,
+    history: "05.08.2026",
+    category: "sigorta",
+    description: "Çalışan sigorta primi",
+    type: "gider",
+    total: "5.300",
+  },
+  {
+    index: 29,
+    history: "04.08.2026",
+    category: "satış",
+    description: "Kurumsal ürün satışı",
+    type: "gelir",
+    total: "19.500",
+  },
+  {
+    index: 30,
+    history: "04.08.2026",
+    category: "diğer",
+    description: "Yazılım lisans geliri",
+    type: "gelir",
+    total: "4.600",
+  },
 ];
 
+const tables = document.querySelector(".tables");
+const table = document.querySelector(".faturalar .table");
+
+table.appendChild(tables.cloneNode(true));
+
 const processData = (person) => {
-  const tbody = document.querySelector("tbody");
+  const panel_tbody = document.querySelector(".panel tbody");
+  const fatura_tbody = document.querySelector(".faturalar tbody");
   const tr = document.createElement("tr");
 
   Object.values(person).forEach((value) => {
@@ -133,7 +335,11 @@ const processData = (person) => {
     tr.appendChild(td);
   });
 
-  tbody.appendChild(tr);
+  if (panel_tbody && panel_tbody.children.length < 6) {
+    panel_tbody.appendChild(tr.cloneNode(true));
+  }
+
+  fatura_tbody.appendChild(tr);
 };
 
 data.forEach(processData);
@@ -237,7 +443,3 @@ const calculateData = () => {
   }
 };
 calculateData();
-
-function showMore() {
-  Fatura();
-}
