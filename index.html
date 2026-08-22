@@ -11,7 +11,14 @@
 
 <body>
   <aside class="aside">
-    <h3>Muhasebe Uygulaması</h3>
+    <div class="side-bar-bg">
+      <h3>Menu</h3>
+      <button class="side-bar" onclick="sideBar()">
+        <span class="bars bar1"></span>
+        <span class="bars bar2"></span>
+        <span class="bars bar3"></span>
+      </button>
+    </div>
     <nav class="nav">
       <ul class="nav-list">
         <li>
@@ -116,6 +123,12 @@
           </article>
         </div>
       </section>
+    </div>
+
+    <div id="faturalar" class="faturalar contents">
+      <section class="table">
+        <h3>Faturalar</h3>
+      </section>
       <section class="new-process">
         <button class="xmark" onclick="xMark()">X</button>
         <h2>YENİ İŞLEM KAYDET</h2>
@@ -168,20 +181,9 @@
       <button class="plus" onclick="newProcess()">+</button>
     </div>
 
-    <div id="faturalar" class="faturalar contents">
-      <section class="table">
-        <h3>Faturalar</h3>
-      </section>
-    </div>
-
     <div id="raporlar" class="raporlar contents">Raporlar</div>
     <div id="settings" class="settings contents">Ayarlar</div>
   </main>
-  <footer>
-    <p>
-      &copy; 2026 Muhasebe uygulaması Tüm hakları saklıdır.
-    </p>
-  </footer>
 
   <div class="overlay" onclick="Overlay()"></div>
   <div class="load"></div>

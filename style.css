@@ -90,8 +90,7 @@ input {
 }
 
 body {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  display: flex;
   color: var(--text-primary);
 }
 
@@ -119,11 +118,34 @@ body {
   height: 100vh;
 }
 
+.aside .side-bar-bg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .aside h3 {
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 25px;
   color: var(--text-primary);
-  text-align: center;
+  margin-inline: auto;
+}
+
+.aside .side-bar {
+  justify-self: end;
+  border: 2px solid rgba(0, 123, 255, .2);
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.aside .bars {
+  display: block;
+  width: 2rem;
+  height: 6px;
+  margin: 3px;
+  background-color: rgba(0, 123, 255, .8);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  transition: .2s ease;
 }
 
 .aside .nav {
@@ -141,13 +163,14 @@ body {
   transition: .2s ease;
 
   & i {
+    font-size: 22px;
     color: var(--text-muted);
     transition: .2s ease;
   }
 
   & span {
     color: var(--text-secondary);
-    transition: .2s ease;
+    transition: all .2s ease;
   }
 }
 
@@ -162,18 +185,19 @@ body {
 }
 
 .main {
-  flex: 4 0 0;
+  flex: 5 0 0;
   background-color: var(--sidebar-bg);
   display: grid;
   grid-template-rows: 1fr auto;
   min-height: 100vh;
-  padding: .5rem;
+  padding: .8rem;
 }
 
 .main .panel .cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .main .panel .card {
@@ -289,7 +313,7 @@ table {
 }
 
 .plus {
-  position: absolute;
+  position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   width: 50px;
@@ -306,16 +330,17 @@ table {
   gap: .2rem;
 }
 
-.panel .new-process {
+.faturalar .new-process {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 1.5rem;
   width: 500px;
-  background-color: var(--bg-card);
+  background-color: var(--bg-card-hover);
   border: 1px solid var(--border-color);
   border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
   z-index: 4;
   transition: all .2s ease;
   pointer-events: none;
@@ -326,12 +351,12 @@ table {
   }
 }
 
-.panel .new-process h2 {
+.faturalar .new-process h2 {
   font-size: 2rem;
   text-align: center;
 }
 
-.panel .new-process .content {
+.faturalar .new-process .content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 3rem;
@@ -340,15 +365,15 @@ table {
   padding-inline: 2rem;
 }
 
-.panel .new-process label,
-.panel .new-process .type span {
+.faturalar .new-process label,
+.faturalar .new-process .type span {
   font-size: 18px;
 }
 
-.panel .new-process #total,
-.panel .new-process #history,
-.panel .new-process #description,
-.panel .new-process #category {
+.faturalar .new-process #total,
+.faturalar .new-process #history,
+.faturalar .new-process #description,
+.faturalar .new-process #category {
   width: 100%;
   background-color: var(--bg-primary);
   color: #fff;
@@ -362,31 +387,31 @@ table {
   }
 }
 
-.panel .new-process #description {
+.faturalar .new-process #description {
   padding-block: 1rem;
 }
 
-.panel .new-process #total::-webkit-inner-spin-button,
-.panel .new-process #total::-webkit-outer-spin-button {
+.faturalar .new-process #total::-webkit-inner-spin-button,
+.faturalar .new-process #total::-webkit-outer-spin-button {
   appearance: none;
   -webkit-appearance: none;
 }
 
-.panel .new-process #history::-webkit-calendar-picker-indicator {
+.faturalar .new-process #history::-webkit-calendar-picker-indicator {
   filter: brightness(0) invert(1);
 }
 
-.panel .new-process .type div {
+.faturalar .new-process .type div {
   display: flex;
   gap: 1.5rem;
   margin-top: .6rem;
 }
 
-.panel .new-process .description {
+.faturalar .new-process .description {
   grid-column: 1 / -1;
 }
 
-.panel .new-process .save {
+.faturalar .new-process .save {
   display: flex;
   align-items: center;
   gap: .5rem;
@@ -402,7 +427,7 @@ table {
   }
 }
 
-.panel .new-process .save:hover {
+.faturalar .new-process .save:hover {
   background-color: var(--accent-yellow-hover);
 }
 
@@ -418,7 +443,7 @@ table {
   opacity: 0;
 }
 
-.panel .new-process .xmark {
+.faturalar .new-process .xmark {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -428,7 +453,7 @@ table {
   color: var(--text-secondary);
 }
 
-.panel .new-process .xmark:hover {
+.faturalar .new-process .xmark:hover {
   color: var(--text-primary);
 }
 
@@ -460,12 +485,12 @@ table {
   color: var(--text-primary);
   width: 30%;
   margin-inline: auto;
-  padding-block: .5rem;
+  padding-block: .4rem;
   font-size: 18px;
   font-weight: 700;
   text-shadow: 0 0 10px rgba(0, 0, 0, .5);
   border-radius: 5px;
-  margin-top: .3rem;
+  margin-top: .5rem;
 }
 
 .contents:not(:first-of-type) {
@@ -474,10 +499,4 @@ table {
 
 .faturalar h3 {
   text-align: center;
-}
-
-footer {
-  width: 100%;
-  text-align: center;
-  background-color: var(--bg-card);
 }

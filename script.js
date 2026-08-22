@@ -335,7 +335,7 @@ const processData = (person) => {
     tr.appendChild(td);
   });
 
-  if (panel_tbody && panel_tbody.children.length < 6) {
+  if (panel_tbody && panel_tbody.children[panel_tbody.children.length - 6]) {
     panel_tbody.appendChild(tr.cloneNode(true));
   }
 

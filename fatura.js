@@ -32,3 +32,9 @@ function Links(link) {
 function showMore() {
   nav_links[1].click();
 }
+
+function sideBar() {
+  const side_bar = document.activeElement;
+
+  side_bar.classList.toggle("active");
+}
